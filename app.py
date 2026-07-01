@@ -658,27 +658,76 @@ st.markdown("""
 
 <div style="
 text-align:center;
-padding:25px;
-border-radius:15px;
+padding:15px;
+border-radius:12px;
 background:#111827;
 color:white;
-margin-top:30px;
+margin-top:20px;
+border:1px solid #1f2937;
 ">
-
-<h4>Developed By</h4>
 
 <h3>Akkireddi Varalakshmi</h3>
 
+<p style="
+color:#9ca3af;
+font-size:15px;
+margin-top:0;
+">
+Project Lead | AI & Full Stack Developer
+</p>
+
+<p style="font-size:14px;">
 📧 akkireddi.varalakshmi24@gmail.com
+</p>
 
-<br><br>
+<p style="font-size:14px;">
+🔗 <a href="https://github.com/akkireddivaralakshmi"
+target="_blank"
+style="color:#60a5fa;text-decoration:none;">
+github.com/akkireddivaralakshmi
+</a>
+</p>
 
-🔗 GitHub:
-https://github.com/akkireddivaralakshmi
+<h4 style="margin-top:15px;">Team Members</h4>
 
-<br><br>
+<p style="
+color:#9ca3af;
+font-size:14px;
+line-height:1.8;
+">
+T. Chaitanya Kumar<br>
+I. V. V. Durga Prasad<br>
+V. Chanakya Eswara Rao
+</p>
 
+<p style="
+color:#9ca3af;
+font-size:13px;
+">
+Version 1.0
+</p>
+
+<p style="
+color:#9ca3af;
+font-size:13px;
+">
+Built with Python • Streamlit • Whisper AI • Machine Learning
+</p>
+
+<hr style="
+border:0;
+height:1px;
+background:#374151;
+margin:10px 0;
+">
+
+<p style="
+font-size:12px;
+color:#6b7280;
+margin:0;
+">
 © 2026 Voice Based Concept Understanding Analyser
+</p>
 
 </div>
 """, unsafe_allow_html=True)
