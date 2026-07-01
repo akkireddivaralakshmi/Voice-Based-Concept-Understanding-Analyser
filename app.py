@@ -500,27 +500,28 @@ else:
             st.error("⚠️ No valid audio file found. Please re-upload your audio.")
         else:
             with st.spinner("Processing and evaluating..."):
-                try:
-                    transcript = speech_to_text(st.session_state.audio_path)
+       try:
+    transcript = speech_to_text(st.session_state.audio_path)
 
-                    similarity = semantic_similarity(transcript, REFERENCE_CONCEPT)
+    similarity = semantic_similarity(transcript, REFERENCE_CONCEPT)
 
-                    audio_features = extract_audio_features(st.session_state.audio_path)
+    audio_features = extract_audio_features(st.session_state.audio_path)
 
-                    filler_ratio = filler_word_ratio(transcript)
+    filler_ratio = filler_word_ratio(transcript)
 
-                    final_score, understanding_level = evaluate_understanding(
-                        similarity, filler_ratio, audio_features
-                    )
+    final_score, understanding_level = evaluate_understanding(
+        similarity, filler_ratio, audio_features
+    )
 
-                    st.session_state.transcript = transcript
-                    st.session_state.similarity = similarity
-                    st.session_state.filler_ratio = filler_ratio
-                    st.session_state.audio_features = audio_features
-                    st.session_state.final_score = final_score
-                    st.session_state.understanding_level = understanding_level
-                    st.session_state.analyzed = True
-                    st.session_state.error_message = None
+    st.session_state.transcript = transcript
+    st.session_state.similarity = similarity
+    st.session_state.filler_ratio = filler_ratio
+    st.session_state.audio_features = audio_features
+    st.session_state.final_score = final_score
+    st.session_state.understanding_level = understanding_level
+    st.session_state.analyzed = True
+    st.session_state.error_message = None
+
 except FileNotFoundError:
     st.session_state.error_message = "⚠️ The uploaded audio file could not be found or read."
 
