@@ -521,8 +521,13 @@ else:
                     st.session_state.understanding_level = understanding_level
                     st.session_state.analyzed = True
                     st.session_state.error_message = None
-except Exception as e:
-    st.error(str(e))
+except FileNotFoundError:
+    st.session_state.error_message = "⚠️ The uploaded audio file could not be found or read."
+
+except Exception:
+    st.session_state.error_message = (
+        "⚠️ The audio file appears to be corrupted or could not be processed."
+    )
 
 if st.session_state.error_message:
     st.error(st.session_state.error_message)
