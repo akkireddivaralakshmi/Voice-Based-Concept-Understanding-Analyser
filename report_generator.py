@@ -1,0 +1,61 @@
+from datetime import datetime
+from fpdf import FPDF
+
+def generate_pdf_report(
+    transcript,
+    similarity,
+    filler_ratio,
+    audio_features,
+    final_score,
+    understanding_level
+):
+
+    pdf = FPDF()
+
+    pdf.add_page()
+
+    pdf.set_font("Arial", "B", 16)
+
+    pdf.cell(
+        0,
+        10,
+        "Voice Based Concept Understanding Analyser",
+        ln=True
+    )
+
+    pdf.ln(5)
+
+    pdf.set_font("Arial", "", 11)
+
+    pdf.multi_cell(
+        0,
+        8,
+        f"""
+Generated on: {datetime.now()}
+
+Transcript:
+{transcript}
+
+Semantic Similarity:
+{similarity}
+
+Filler Word Ratio:
+{filler_ratio}
+
+Confidence:
+{audio_features.get("rms_energy",0)}
+
+Pause Ratio:
+{audio_features.get("pause_ratio",0)}
+
+Understanding Score:
+{final_score}
+
+Understanding Level:
+{understanding_level}
+"""
+    )
+
+    return bytes(
+        pdf.output(dest="S")
+    )
