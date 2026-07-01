@@ -1,14 +1,29 @@
+import librosa
+import numpy as np
+
+
 def extract_audio_features(audio_path):
 
+    y, sr = librosa.load(audio_path)
+
+    rms = np.mean(librosa.feature.rms(y=y))
+
+    silence = np.sum(np.abs(y) < 0.01)
+
+    pause_ratio = silence / len(y)
+
     return {
-        "pause_ratio": 0.10,
-        "rms_energy": 0.05
+        "pause_ratio": float(pause_ratio),
+        "rms_energy": float(rms)
     }
 
 
 def filler_word_ratio(transcript):
 
-    filler_words = ["um", "uh", "like"]
+    filler_words = [
+        "um", "uh", "like", "you know",
+        "actually", "basically", "so"
+    ]
 
     words = transcript.lower().split()
 
