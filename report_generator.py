@@ -55,11 +55,8 @@ Understanding Level:
 {understanding_level}
 """
     )
-
-    return bytes(
-        pdf.output(dest="S")
-    )
 pdf.ln(10)
+
 pdf.set_font("Arial", "I", 8)
 pdf.set_text_color(100, 100, 100)
 
@@ -70,4 +67,8 @@ pdf.cell(
     0,
     1,
     "C"
+)
+
+return bytes(
+    pdf.output(dest="S")
 )
