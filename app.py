@@ -37,7 +37,50 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
+st.markdown("""
+<style>
 
+/* Main Background */
+.stApp {
+    background: linear-gradient(135deg, #050816, #0a192f);
+    color: white;
+}
+
+/* Cards */
+div[data-testid="stVerticalBlock"] > div {
+    border-radius: 15px;
+}
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+}
+
+/* Metrics */
+[data-testid="metric-container"] {
+    background-color: #111827;
+    border: 1px solid #374151;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+/* Upload Box */
+[data-testid="stFileUploader"] {
+    border: 2px dashed #7c3aed;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+</style>
+""", unsafe_allow_html=True)
 REFERENCE_CONCEPT = (
     "Machine Learning is a subset of artificial intelligence that allows systems "
     "to learn patterns from data and improve performance without being explicitly "
@@ -610,3 +653,32 @@ if st.session_state.analyzed:
         st.warning(str(e))
     except Exception:
         st.warning("⚠️ Unable to generate the PDF report at this time.")
+st.markdown("""
+<hr>
+
+<div style="
+text-align:center;
+padding:25px;
+border-radius:15px;
+background:#111827;
+color:white;
+margin-top:30px;
+">
+
+<h4>Developed By</h4>
+
+<h3>Akkireddi Varalakshmi</h3>
+
+📧 akkireddi.varalakshmi24@gmail.com
+
+<br><br>
+
+🔗 GitHub:
+https://github.com/akkireddivaralakshmi
+
+<br><br>
+
+© 2026 Voice Based Concept Understanding Analyser
+
+</div>
+""", unsafe_allow_html=True)
