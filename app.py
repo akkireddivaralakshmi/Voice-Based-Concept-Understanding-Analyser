@@ -500,39 +500,46 @@ else:
             st.error("⚠️ No valid audio file found. Please re-upload your audio.")
         else:
             with st.spinner("Processing and evaluating..."):
-       try:
-    transcript = speech_to_text(st.session_state.audio_path)
 
-    similarity = semantic_similarity(transcript, REFERENCE_CONCEPT)
+                try:
+                    transcript = speech_to_text(st.session_state.audio_path)
 
-    audio_features = extract_audio_features(st.session_state.audio_path)
+                    similarity = semantic_similarity(
+                        transcript,
+                        REFERENCE_CONCEPT
+                    )
 
-    filler_ratio = filler_word_ratio(transcript)
+                    audio_features = extract_audio_features(
+                        st.session_state.audio_path
+                    )
 
-    final_score, understanding_level = evaluate_understanding(
-        similarity, filler_ratio, audio_features
-    )
+                    filler_ratio = filler_word_ratio(transcript)
 
-    st.session_state.transcript = transcript
-    st.session_state.similarity = similarity
-    st.session_state.filler_ratio = filler_ratio
-    st.session_state.audio_features = audio_features
-    st.session_state.final_score = final_score
-    st.session_state.understanding_level = understanding_level
-    st.session_state.analyzed = True
-    st.session_state.error_message = None
+                    final_score, understanding_level = evaluate_understanding(
+                        similarity,
+                        filler_ratio,
+                        audio_features
+                    )
 
-except FileNotFoundError:
-    st.session_state.error_message = "⚠️ The uploaded audio file could not be found or read."
+                    st.session_state.transcript = transcript
+                    st.session_state.similarity = similarity
+                    st.session_state.filler_ratio = filler_ratio
+                    st.session_state.audio_features = audio_features
+                    st.session_state.final_score = final_score
+                    st.session_state.understanding_level = understanding_level
+                    st.session_state.analyzed = True
+                    st.session_state.error_message = None
 
-except Exception:
-    st.session_state.error_message = (
-        "⚠️ The audio file appears to be corrupted or could not be processed."
-    )
+                except FileNotFoundError:
+                    st.session_state.error_message = (
+                        "⚠️ The uploaded audio file could not be found or read."
+                    )
+
+                except Exception as e:
+                    st.session_state.error_message = str(e)
 
 if st.session_state.error_message:
     st.error(st.session_state.error_message)
-
 # --------------------------------------------------------------------------------------
 # RESULTS DASHBOARD
 # --------------------------------------------------------------------------------------
