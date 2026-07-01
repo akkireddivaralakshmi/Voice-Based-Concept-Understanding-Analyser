@@ -1,3 +1,9 @@
+import whisper
+
+model = whisper.load_model("base")
+
 def speech_to_text(audio_path):
 
-    return "This is a sample transcription generated from audio."
+    result = model.transcribe(audio_path)
+
+    return result["text"]
