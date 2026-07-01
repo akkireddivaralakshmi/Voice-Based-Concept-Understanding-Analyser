@@ -4,3 +4,7 @@ matplotlib
 fpdf2
 openai-whisper
 torch
+sentence-transformers
+scikit-learn
+librosa
+soundfile
