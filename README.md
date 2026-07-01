@@ -39,18 +39,32 @@ https://voice-based-concept-understanding-analyser.streamlit.app/
 4. Extract audio features and detect filler words
 5. Calculate the understanding score
 6. Generate evaluation metrics
-7. Download the PDF report
+7. Generate and download the PDF report
 
-## Developer
+## Project Team
 
-Akkireddi Varalakshmi
+### Project Lead
+
+**Akkireddi Varalakshmi**
 
 Email: akkireddi.varalakshmi@gmail.com
 
 GitHub: https://github.com/akkireddivaralakshmi
+
+### Team Members
+
+- T. Chaitanya Kumar
+- I. V. V. Durga Prasad
+- V. Chanakya Eswara Rao
+
+## Version
+
+Version 1.0
 
 ## Copyright
 
 © 2026 Voice-Based-Concept-Understanding-Analyser
 
 All Rights Reserved.
+
+Built with Python, Streamlit, Whisper AI, Sentence Transformers, and Machine Learning.
