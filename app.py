@@ -403,7 +403,14 @@ def build_pdf_report() -> bytes:
 
     pdf.set_font("Helvetica", "", 11)
     pdf.set_text_color(90, 90, 90)
-    pdf.cell(0, 8, f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=True)
+  from zoneinfo import ZoneInfo
+
+pdf.cell(
+    0,
+    8,
+    f"Generated on: {datetime.now(ZoneInfo('Asia/Kolkata')).strftime('%Y-%m-%d %H:%M:%S')}",
+    ln=True
+)
     pdf.ln(4)
 
     def section_title(text):
@@ -442,6 +449,19 @@ def build_pdf_report() -> bytes:
         f"Understanding Score: {st.session_state.final_score} / 100\n"
         f"Understanding Level: {st.session_state.understanding_level}"
     )
+# Footer Credit
+pdf.ln(15)
+
+pdf.set_font("Helvetica", "I", 8)
+pdf.set_text_color(120, 120, 120)
+
+pdf.cell(
+    0,
+    5,
+    "Developed By Akkireddi Varalakshmi",
+    ln=True,
+    align="C"
+)
 
     output = pdf.output(dest="S")
     if isinstance(output, str):
