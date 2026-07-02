@@ -444,7 +444,7 @@ def build_pdf_report() -> bytes:
         f"Confidence (Energy): {features.get('rms_energy', 0):.3f}\n"
         f"Pause Ratio: {features.get('pause_ratio', 0):.3f}"
     )
-        section_title("Final Result")
+    section_title("Final Result")
 
     body_text(
         f"Understanding Score: {st.session_state.final_score} / 100\n"
