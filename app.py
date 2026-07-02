@@ -13,8 +13,7 @@ Backend modules (NOT modified):
 import io
 import os
 import tempfile
-from datetime import datetime
-from zoneinfo import ZoneInfo
+from datetime import datetime, timedelta
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -387,7 +386,7 @@ def build_pdf_report() -> bytes:
     session_state. report_generator.py is currently empty, so the report
     is composed here using fpdf2 without touching any backend module.
     """
-    try:
+       try:
         from fpdf import FPDF
     except ImportError:
         raise RuntimeError(
@@ -405,15 +404,16 @@ def build_pdf_report() -> bytes:
     pdf.set_font("Helvetica", "", 11)
     pdf.set_text_color(90, 90, 90)
 
+    ist_time = datetime.utcnow() + timedelta(hours=5, minutes=30)
+
     pdf.cell(
         0,
         8,
-        f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        f"Generated on: {ist_time.strftime('%Y-%m-%d %H:%M:%S IST')}",
         ln=True
     )
 
     pdf.ln(4)
-
     def section_title(text):
         pdf.set_font("Helvetica", "B", 13)
         pdf.set_text_color(20, 30, 60)
