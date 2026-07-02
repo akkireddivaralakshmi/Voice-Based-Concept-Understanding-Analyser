@@ -411,7 +411,7 @@ pdf.cell(
     f"Generated on: {datetime.now(ZoneInfo('Asia/Kolkata')).strftime('%Y-%m-%d %H:%M:%S')}",
     ln=True
 )
-    pdf.ln(4)
+pdf.ln(4)
 
     def section_title(text):
         pdf.set_font("Helvetica", "B", 13)
