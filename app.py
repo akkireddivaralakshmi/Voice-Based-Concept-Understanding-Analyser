@@ -14,6 +14,7 @@ import io
 import os
 import tempfile
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -443,30 +444,34 @@ pdf.cell(
         f"Confidence (Energy): {features.get('rms_energy', 0):.3f}\n"
         f"Pause Ratio: {features.get('pause_ratio', 0):.3f}"
     )
+        section_title("Final Result")
 
-    section_title("Final Result")
     body_text(
         f"Understanding Score: {st.session_state.final_score} / 100\n"
         f"Understanding Level: {st.session_state.understanding_level}"
     )
-# Footer Credit
-pdf.ln(15)
 
-pdf.set_font("Helvetica", "I", 8)
-pdf.set_text_color(120, 120, 120)
+    # Footer Credit
+    pdf.ln(15)
 
-pdf.cell(
-    0,
-    5,
-    "Developed By Akkireddi Varalakshmi",
-    ln=True,
-    align="C"
-)
+    pdf.set_font("Helvetica", "I", 8)
+    pdf.set_text_color(120, 120, 120)
+
+    pdf.cell(
+        0,
+        5,
+        "Developed By Akkireddi Varalakshmi",
+        ln=True,
+        align="C"
+    )
 
     output = pdf.output(dest="S")
+
     if isinstance(output, str):
         output = output.encode("latin-1")
+
     return bytes(output)
+   
 
 
 # --------------------------------------------------------------------------------------
