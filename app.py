@@ -386,7 +386,7 @@ def build_pdf_report() -> bytes:
     session_state. report_generator.py is currently empty, so the report
     is composed here using fpdf2 without touching any backend module.
     """
-       try:
+    try:
         from fpdf import FPDF
     except ImportError:
         raise RuntimeError(
