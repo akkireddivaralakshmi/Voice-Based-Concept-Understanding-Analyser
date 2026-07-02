@@ -404,7 +404,6 @@ def build_pdf_report() -> bytes:
 
     pdf.set_font("Helvetica", "", 11)
     pdf.set_text_color(90, 90, 90)
-  from zoneinfo import ZoneInfo
 
 pdf.cell(
     0,
